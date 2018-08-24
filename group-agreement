@@ -1,0 +1,47 @@
+#Communication plan:
+How will your group communicate with each other?
+*Always be kind and positive
+*Send memes, when appropriate
+*Only give feedback if it is true, kind and necessary
+*Call over text if it’s a one-on-one discussion
+*Use the Slack group to make sure everyone is on the same page
+*Be direct when communicating so team members don’t have to ‘read between the lines’
+
+#What is your strategy for ensuring everyone's voices are heard, and that contributions from both loud and soft voices are listened to?
+*Be your own advocate in making sure you are heard
+*Team member need to make sure they are listening and reading all communications
+*Have round-table discussions where every has the explicit opportunity to speak if they want
+*Do you have a plan for managing psychological safety, as we learned about in the article on Google and teams and discussing it with Brook?
+*Be curious, if you don’t agree with something ask questions and be sure not to be negative
+*When a mistake is made, instead of assigning blame, as a team we will discuss the logic behind why the mistake was made and then fix the problem with an eye for preventing it from happening again
+
+#Conflict plan:
+What will your group do when it encounters conflict? What will your process be to resolve it?
+*When a mistake is made, instead of assigning blame, as a team we will discuss the logic behind why the mistake was made and then fix the problem with an eye for preventing it from happening again
+*Always be kind and positive
+*Take the type of break you need if things get heated
+*Don’t butt-heads about issues for more than 15 minutes at a time, bring in another team member or an outside source to help arbitrate
+*In situations where there are multiple options discuss the benefits/weaknesses of each option and vote
+*Be able to let your ideas go and back the group decision 100%
+*If something another team member is doing is bothering you, speak with that team member and be direct and kind
+
+#Work plan:
+*How you will identify tasks, assign tasks, know when they are complete, and manage work in general? In particular, make sure you know how you'll track whether everyone is contributing equally to the JavaScript, CSS, and HTML portions, and that each person is working on "meaty" problems.
+*What are we most/least interested working in:
+*Jack: Prefers JavaScript ‘high-level’ theory and HTML, can work whenever
+*Evan: Prefers JavaScript and traversing the DOM and CSS, late morning
+*Tim: Prefers building functions in JavaScript that are core to the system, good at execution but needs a reference/starting point, can work anytime but doesn’t like to be interrupted when thinking
+*LJ: Prefers not JavaScript, prefers the big picture stuff, design, HTML and CSS, putting together presentations, needs to work not at Code Fellows, can work anytime be works best in the morning and later evening
+
+#Git process:
+What is your Git flow? How many people must review a PR? Who merges PRs?
+*#Follow the Git flow document
+*One person who didn’t work on the branch must review the PR and comment that they reviewed it
+*Create PR’s when a function is working (lots of small changes can be PR’d together)
+*LJ will review from a consumer perspective and will merge PR’s once the PR has been reviewed and commented on by another team member
+
+#Extra:
+*Comment after every empty line with name of commenter
+*More comments are better
+*Focus on names with the goal of making the code intuitive for someone who doesn’t understand code
+*Start at 9am, stand-up/round-table at 9:30am
