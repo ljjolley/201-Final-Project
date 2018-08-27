@@ -15,15 +15,16 @@ taskFormEl.addEventListener('submit', function (event) {
   ];
   for (let i = 0; i < assignee.length; i++) {
     if (assignee[i].value) {
-      assignedToList.push(assignee[i].value);
+      assignedToList.push(assignee[i].value.toLowerCase());
     }
     assignee[i].value = null;
   }
   //eslint-disable-next-line
   new Task(
-    event.target.task.value, //takes in the task name and input it in constructor function
+    event.target.task.value.toLowerCase(), //takes in the task name and input it in constructor function
     assignedToList //takes in array of assignedToList and uses it as assigned users.
   );
+  //eslint-disable-next-line
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
   event.target.task.value = null;
 });
