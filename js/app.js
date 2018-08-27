@@ -6,7 +6,7 @@ var taskCreator = function(taskName, assignedTo, startingDate) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
   this.startingDate = startingDate;
-  var currentlyAssignedTo =
+  this.currentlyAssignedTo =
     assignedTo[randomNumberGenerator(assignedTo.length)];
 };
 
