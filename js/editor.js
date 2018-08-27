@@ -3,7 +3,7 @@
 var taskFormEl = document.getElementById('newTaskForm');
 
 //create event listener to take in form data
-taskFormEl.addEventListener('submit', function (event) {
+taskFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   assignedToList.push(event.target.assignee1.value);
