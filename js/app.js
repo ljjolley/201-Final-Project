@@ -33,3 +33,14 @@ Task.prototype.updateDate = function() {
 function randomNumberGenerator(numberOfPeople) {
   return Math.floor(Math.random() * numberOfPeople);
 }
+
+// Checks if allTasks is in localStorage and if so, retreives it
+function checkLocalStorage() {
+  var dataInLocalStorage = JSON.parse(localStorage.getItem('allTasks'));
+
+  if (dataInLocalStorage) {
+    allTasks = dataInLocalStorage;
+  }
+}
+
+checkLocalStorage();
