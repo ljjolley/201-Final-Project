@@ -11,8 +11,8 @@ taskFormEl.addEventListener('submit', function (event) {
   assignedToList.push(event.target.assignee3.value);
   assignedToList.push(event.target.assignee4.value);
   assignedToList.push(event.target.assignee5.value);
-  allTasks.push(new Task(
+  new Task(
     event.target.task.value, //takes in the task name and input it in constructor function
     assignedToList //takes in the empty array as assigned variable and run it as an prameter
-  ));
+  );
 });
