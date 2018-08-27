@@ -20,6 +20,7 @@ function getAllAssignees(tasks) {
 console.log(getAllAssignees(allTasks));
 
 function render(getAllAssignees) {
+  mainEl.innerHTML = '<h1>Task Overview</h1>';
   var sectionEl = document.createElement('section');
   var ulEl = document.createElement('ul');
   var h3El = document.createElement('h3');
@@ -37,14 +38,18 @@ function render(getAllAssignees) {
   sectionEl.appendChild(ulEl2);
 
   ulEl.setAttribute('id', 'peoples-names');
+  ulEl2.setAttribute('id', 'peoples-tasks');
   var peoplesNames = document.getElementById('peoples-names');
 
   peoplesNames.addEventListener('click', showThisPersonsTasks);
 }
 
 function showThisPersonsTasks(event) {
+  var peoplesTasks = document.getElementById('peoples-tasks');
   var personClickedOn = event.target.textContent;
   var thisPersonsTasks = [];
+
+  peoplesTasks.innerHTML = '';
 
   if (personClickedOn) {
     for (var i = 0; i < allTasks.length; i++) {
@@ -53,9 +58,15 @@ function showThisPersonsTasks(event) {
       }
     }
   }
+
+  for (var i = 0; i < thisPersonsTasks.length; i++) {
+    var ilEl = document.createElement('il');
+    ilEl.textContent = thisPersonsTasks[i];
+    peoplesTasks.appendChild(ilEl);
+  }
+
   console.log(thisPersonsTasks);
   return thisPersonsTasks;
 }
-
 
 render(getAllAssignees(allTasks));
