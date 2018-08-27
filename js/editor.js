@@ -24,5 +24,6 @@ taskFormEl.addEventListener('submit', function(event) {
     event.target.task.value, //takes in the task name and input it in constructor function
     assignedToList //takes in the empty array as assigned variable and run it as an prameter
   );
+
   event.target.task.value = null;
 });
