@@ -4,10 +4,10 @@ var dayOfWeek = today.getDay();
 var allTasks = [];
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.
-var Task = function(taskName, assignedTo, startingDate) {
+var Task = function(taskName, assignedTo) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
-  this.startingDate = startingDate;
+  this.startingDate = dayOfWeek;
   this.currentlyAssignedTo =
     assignedTo[randomNumberGenerator(assignedTo.length)];
   allTasks.push(this);
@@ -17,7 +17,7 @@ Task.prototype.updateDate = function() {
   if (dayOfWeek !== this.startingDate) {
     this.startingDate = dayOfWeek;
     if (
-      this.assignedTo.indexOf(this.currentlyAssignedTo) + 1 >
+      this.assignedTo.indexOf(this.currentlyAssignedTo) + 1 >=
       this.assignedTo.length
     ) {
       this.currentlyAssignedTo = this.assignedTo[0];
