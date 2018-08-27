@@ -1,8 +1,8 @@
 MVP User Stories:
 
-As a developer, I want to make sure that the product is scalable and can be easily worked by any other engineers.
-As a developer, I want to make sure that the product is well delivered visually, so it demonstrates quality to future employeers.
-As a developer, I want to utilize OOP to create a logically sound, well coded application.
+* As a developer, I want to make sure that the product is scalable and can be easily worked by any other engineers.
+* As a developer, I want to make sure that the product is well delivered visually, so it demonstrates quality to future employeers.
+* As a developer, I want to utilize OOP to create a logically sound, well coded application.
 As a developer, I want to make sure to follow the DRY principle and Single Responsibility Principle to eliminate as much code smell as possible.
 
 As a user I want a login to store my preferences and my set schedule, to keep my tasks organized.
