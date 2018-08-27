@@ -3,7 +3,7 @@
 var taskFormEl = document.getElementById('newTaskForm');
 
 //create event listener to take in form data
-taskFormEl.addEventListener('submit', function(event) {
+taskFormEl.addEventListener('submit', function (event) {
   event.preventDefault();
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   var assignee = [
@@ -22,8 +22,8 @@ taskFormEl.addEventListener('submit', function(event) {
   //eslint-disable-next-line
   new Task(
     event.target.task.value, //takes in the task name and input it in constructor function
-    assignedToList //takes in the empty array as assigned variable and run it as an prameter
+    assignedToList //takes in array of assignedToList and uses it as assigned users.
   );
-
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
   event.target.task.value = null;
 });
