@@ -21,14 +21,25 @@ function editorInput() {
     }
     assignee[i].value = null;
   }
+  assignedToList = deleteDuplicatenames(assignedToList);
+
   //eslint-disable-next-line
   new Task(event.target.task.value.toLowerCase(), assignedToList);
-  //eslint-disable-next-line
-
   //store the all task array as 'allTasks' and updates it;
   //eslint-disable-next-line
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
   event.target.task.value = null;
+}
+
+// This function checkes for duplicate names in an Array and returns a new array that works.
+function deleteDuplicatenames(tasks) {
+  var noDuplicates = [];
+  for (var i = 0; i < tasks.length; i++) {
+    if (noDuplicates.indexOf(tasks[i]) === -1) {
+      noDuplicates.push(tasks[i]);
+    }
+  }
+  return noDuplicates;
 }
 
 //renders the local storage to display the tasks as lists
@@ -39,7 +50,6 @@ function editorRender() {
   //eslint-disable-next-line
   for (
     let localDataObjects = 0;
-
     //eslint-disable-next-line
     localDataObjects < allTasks.length;
     localDataObjects++
@@ -67,7 +77,6 @@ function editorRender() {
     //eslint-disable-next-line
     for (
       let assigneeInTasks = 0;
-
       //eslint-disable-next-line
       assigneeInTasks < allTasks[localDataObjects].assignedTo.length;
       assigneeInTasks++
