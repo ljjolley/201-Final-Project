@@ -6,7 +6,6 @@ header {
   background-color: rgb(64, 161, 184);
   height: 5em;
   margin-bottom: 2em;
-  box-shadow: 0 1px 3px black;
 }
 
 header img {
@@ -34,6 +33,7 @@ header a {
 main {
   width: 50em;
   margin: 0 auto 5em;
+  min-height: calc(80vh - 70px);
 }
 
 h1 {
@@ -48,6 +48,10 @@ form {
   border-radius: 10px;
   padding: 1em;
   margin-bottom: 1em;
+}
+
+fieldset legend {
+  font-size: 1.5em;
 }
 
 label,
@@ -139,5 +143,5 @@ section ul:first-child li {
 footer {
   background-color: rgb(64, 161, 184);
   height: 4em;
-  box-shadow: 0 -1px 3px black;
+  height: 50px;
 }
