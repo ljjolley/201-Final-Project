@@ -16,9 +16,10 @@ function getAllAssignees(tasks) {
 
   return allAssignees;
 }
-
+//eslint-disable-next-line
 console.log(getAllAssignees(allTasks));
 
+//render the assignee and display them as lists
 function render(getAllAssignees) {
   mainEl.innerHTML = '<h1>Task Overview</h1>';
   var sectionEl = document.createElement('section');
@@ -44,6 +45,7 @@ function render(getAllAssignees) {
   peoplesNames.addEventListener('click', showThisPersonsTasks);
 }
 
+//function to show task of individual after being clicked on
 function showThisPersonsTasks(event) {
   var peoplesTasks = document.getElementById('peoples-tasks');
   var personClickedOn = event.target.textContent;
@@ -52,8 +54,11 @@ function showThisPersonsTasks(event) {
   peoplesTasks.innerHTML = '';
 
   if (personClickedOn) {
+    //eslint-disable-next-line
     for (var i = 0; i < allTasks.length; i++) {
+      //eslint-disable-next-line
       if (personClickedOn === allTasks[i].currentlyAssignedTo) {
+        //eslint-disable-next-line
         thisPersonsTasks.push(allTasks[i].taskName);
       }
     }
@@ -68,5 +73,5 @@ function showThisPersonsTasks(event) {
   console.log(thisPersonsTasks);
   return thisPersonsTasks;
 }
-
+//eslint-disable-next-line
 render(getAllAssignees(allTasks));

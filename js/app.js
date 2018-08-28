@@ -12,16 +12,20 @@ var Task = function(taskName, assignedTo) {
     assignedTo[randomNumberGenerator(assignedTo.length)];
   allTasks.push(this);
 };
-// This checks to see if it is a new day, if it is then it changes who the task is assigned to, if the person assigned yesterday is last in the array it starts again at the beginning of the array
+// This function rotates through users
 Task.prototype.updateDate = function() {
   if (dayOfWeek !== this.startingDate) {
     this.startingDate = dayOfWeek;
+
+    //This checks if the user is the last one on the array
     if (
       this.assignedTo.indexOf(this.currentlyAssignedTo) + 1 >=
       this.assignedTo.length
     ) {
+      //If so it is restarted at the 1st item in the array
       this.currentlyAssignedTo = this.assignedTo[0];
     } else {
+      //Else it is rotated normally
       this.currentlyAssignedTo = this.assignedTo[
         this.assignedTo.indexOf(this.currentlyAssignedTo) + 1
       ];
