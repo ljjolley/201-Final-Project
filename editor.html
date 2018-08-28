@@ -28,10 +28,28 @@
 
   <main id="editor-main">
     <form id="newTaskForm">
+      <legend>Task Creator</legend>
       <fieldset>
-        <legend>Task Creator</legend>
         <label for="task">Task Name:</label>
         <input name="task" type="text" size="15" required="required" placeholder="Task" />
+
+        <select id="frequency-of-task" name="frequency-of-task">
+          <option value="one-off" selected="selected">One Off</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+
+        <select id="day-of-task" name="day-of-task">
+            <option value="sunday" selected="selected">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+          </select>
+
         <label for="assignee1">Name</label>
         <input name="assignee1" type="text" size="15" required="required" placeholder="Name" />
         <label for="assignee2">Name</label>

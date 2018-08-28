@@ -5,6 +5,8 @@ var divEl = document.getElementById('tasks-editor-list');
 
 //takes in user data and transforms them to local data
 function editorInput() {
+  var frequencyOfTask = document.getElementById('frequency-of-task').value;
+  var dayOfTask = document.getElementById('day-of-task').value;
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   var assignee = [
     event.target.assignee1,
@@ -22,7 +24,7 @@ function editorInput() {
     assignee[i].value = null;
   }
   //eslint-disable-next-line
-  new Task(event.target.task.value.toLowerCase(), assignedToList);
+  new Task(event.target.task.value.toLowerCase(), assignedToList, frequencyOfTask, dayOfTask);
   //eslint-disable-next-line
 
   //store the all task array as 'allTasks' and updates it;
