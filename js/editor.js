@@ -1,6 +1,7 @@
 'use strict';
 //create variable to retrieve form ID
 var taskFormEl = document.getElementById('newTaskForm');
+var divEl = document.getElementById('tasks-editor-list');
 
 function editorInput() {
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
@@ -29,8 +30,7 @@ function editorInput() {
 
 //renders the local storage to display the tasks as lists
 function editorRender() {
-  //create variables to retrieve DOM
-  var mainEl = document.getElementById('editor-main');
+  divEl.innerHTML = '';
 
   //run a loop to create elements based on local storage
   //eslint-disable-next-line
@@ -40,7 +40,7 @@ function editorRender() {
     localDataObjects++
   ) {
     var sectionEl = document.createElement('section');
-    mainEl.appendChild(sectionEl);
+    divEl.appendChild(sectionEl);
     var h2El = document.createElement('h2');
     var buttonEl = document.createElement('button');
     var pEl = document.createElement('p');
