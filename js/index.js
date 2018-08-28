@@ -27,7 +27,7 @@ function render(getAllAssignees) {
   var ulEl2 = document.createElement('ul');
 
   for (var i = 0; i < getAllAssignees.length; i++) {
-    var ilEl = document.createElement('il');
+    var ilEl = document.createElement('li');
     ilEl.textContent = getAllAssignees[i];
     ulEl.appendChild(ilEl);
   }

@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: rgb(74, 135, 232);
+  height: 5em;
+  margin-bottom: 2em;
+  box-shadow: 0 1px 3px black;
+}
+
+header img {
+  float: left;
+  margin: .28em 0 0 1em;
+}
+
+header ul {
+  float: right;
+  margin: 1.9em 5em 0 0;
+}
+
+header li {
+  display: inline;
+  margin: 0 1.3em;
+}
+
+header a {
+  font-size: 1.3em;
+  color: white;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px black;
+}
+
+main {
+  width: 50em;
+  margin: 0 auto 5em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: .6em;
+}
+
+form {
+  border: 1px solid black;
+  box-shadow: 1px 1px 3px black;
+  border-radius: 10px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+label, input {
+  display: block;
+  width: 20em;
+}
+
+input {
+  padding: .4em 2em .4em 1em;
+  border-radius: 5px;
+  border: .5px solid black;
+}
+
+form button {
+  margin: 1em auto;
+  width: 15em;
+  display: block;
+  padding: .7em;
+  border-radius: 5px;
+  border: .5px solid black;
+}
+
+section {
+  border: 1px solid black;
+  box-shadow: 1px 1px 3px black;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 1.2em 2em 2.3em;
+  margin-bottom: 1em;
+}
+
+section button {
+  float: right;
+  border: none;
+  background-color: transparent;
+  color: red;
+}
+
+section button:hover {
+  cursor: pointer;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: .5em;
+  text-transform: capitalize;
+}
+
+button + p {
+  float: left;
+  margin-right: .5em;
+  padding: .45em 0;
+  font-size: .85em;
+}
+
+li {
+  text-transform: capitalize;
+}
+
+p + ul li {
+  float: left;
+  width: 5em;
+  margin-right: 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: .4em 2em .4em 1em;
+  font-size: .85em;
+}
+
+section ul {
+  float: left;
+}
+
+section ul:first-child {
+  width: 15em;
+  margin-right: 5em;
+}
+
+section ul:first-child li {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: .5em;
+  text-align: center;
+}
+
+footer {
+  background-color: rgb(74, 135, 232);
+  height: 4em;
+  box-shadow: 0 -1px 3px black;
+}
