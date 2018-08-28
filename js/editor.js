@@ -2,7 +2,6 @@
 //create variable to retrieve form ID
 var taskFormEl = document.getElementById('newTaskForm');
 
-
 function editorInput() {
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   var assignee = [
@@ -35,7 +34,11 @@ function editorRender() {
 
   //run a loop to create elements based on local storage
   //eslint-disable-next-line
-  for (let localDataObjects = 0; localDataObjects < allTasks.length; localDataObjects++) {
+  for (
+    let localDataObjects = 0;
+    localDataObjects < allTasks.length;
+    localDataObjects++
+  ) {
     var sectionEl = document.createElement('section');
     mainEl.appendChild(sectionEl);
     var h2El = document.createElement('h2');
@@ -57,7 +60,11 @@ function editorRender() {
 
     //created a list that shows the assigned individual
     //eslint-disable-next-line
-    for (let assigneeInTasks = 0; assigneeInTasks < allTasks[localDataObjects].assignedTo.length; assigneeInTasks++) {
+    for (
+      let assigneeInTasks = 0;
+      assigneeInTasks < allTasks[localDataObjects].assignedTo.length;
+      assigneeInTasks++
+    ) {
       var liEl = document.createElement('li');
       //eslint-disable-next-line
       liEl.textContent = allTasks[localDataObjects].assignedTo[assigneeInTasks];
@@ -86,13 +93,12 @@ function deleteTask(event) {
   }
 }
 
-
 function sectionEventListener() {
   //eslint-disable-next-line
   checkLocalStorage();
   var taskSectionEls = document.getElementsByTagName('section');
   for (let i = 0; i < taskSectionEls.length; i++) {
-    taskSectionEls[i].addEventListener('click', function (event) {
+    taskSectionEls[i].addEventListener('click', function(event) {
       deleteTask(event);
     });
   }
@@ -100,7 +106,7 @@ function sectionEventListener() {
 
 editorRender();
 //create event listener to take in form data
-taskFormEl.addEventListener('submit', function (event) {
+taskFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
   editorInput(event);
   //eslint-disable-next-line
