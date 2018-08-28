@@ -39,6 +39,7 @@ function editorRender() {
   //eslint-disable-next-line
   for (
     let localDataObjects = 0;
+
     //eslint-disable-next-line
     localDataObjects < allTasks.length;
     localDataObjects++
@@ -66,6 +67,7 @@ function editorRender() {
     //eslint-disable-next-line
     for (
       let assigneeInTasks = 0;
+
       //eslint-disable-next-line
       assigneeInTasks < allTasks[localDataObjects].assignedTo.length;
       assigneeInTasks++
@@ -112,7 +114,8 @@ function sectionEventListener() {
 
 //rendered all the data onto page to display task
 editorRender();
-//event listener to take in form data
+
+//create event listener to take in form data
 taskFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
   editorInput(event);
