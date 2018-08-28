@@ -56,6 +56,7 @@ function showThisPersonsTasks(event) {
   if (personClickedOn) {
     //eslint-disable-next-line
     for (var i = 0; i < allTasks.length; i++) {
+
       //eslint-disable-next-line
       if (personClickedOn === allTasks[i].currentlyAssignedTo) {
         //eslint-disable-next-line
@@ -75,3 +76,29 @@ function showThisPersonsTasks(event) {
 }
 //eslint-disable-next-line
 render(getAllAssignees(allTasks));
+
+
+// function updateWeekly() {
+//   var recur = moment(dayTaskCreated).recur().every(7).days();
+
+//   if (recur.matches(today)) {
+    
+//   }
+// };
+
+var howOftenTheTaskRepeats = allTasks[i].frequencyOfTask;
+var dateTaskWasCreated = allTasks[i].dayTaskCreated
+
+switch (howOftenTheTaskRepeats) {
+  case 'daily':
+      
+    break;
+  case 'weekly':
+    var recur = moment(dateTaskWasCreated).recur().every(7).days();
+    break;
+  case 'monthly':
+  
+    break;
+  default:
+    
+}
