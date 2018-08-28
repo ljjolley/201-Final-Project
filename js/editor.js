@@ -3,6 +3,7 @@
 var taskFormEl = document.getElementById('newTaskForm');
 var divEl = document.getElementById('tasks-editor-list');
 
+//takes in user data and transforms them to local data
 function editorInput() {
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   var assignee = [
@@ -12,6 +13,8 @@ function editorInput() {
     event.target.assignee4,
     event.target.assignee5
   ];
+
+  //clears out user data after the submit button and runs for loop to push data onto assigned list array
   for (let i = 0; i < assignee.length; i++) {
     if (assignee[i].value) {
       assignedToList.push(assignee[i].value.toLowerCase());
@@ -19,10 +22,10 @@ function editorInput() {
     assignee[i].value = null;
   }
   //eslint-disable-next-line
-  new Task(
-    event.target.task.value.toLowerCase(), //takes in the task name and input it in constructor function
-    assignedToList //takes in array of assignedToList and uses it as assigned users.
-  );
+  new Task(event.target.task.value.toLowerCase(), assignedToList);
+  //eslint-disable-next-line
+
+  //store the all task array as 'allTasks' and updates it;
   //eslint-disable-next-line
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
   event.target.task.value = null;
@@ -36,6 +39,8 @@ function editorRender() {
   //eslint-disable-next-line
   for (
     let localDataObjects = 0;
+
+    //eslint-disable-next-line
     localDataObjects < allTasks.length;
     localDataObjects++
   ) {
@@ -58,10 +63,12 @@ function editorRender() {
     sectionEl.appendChild(pEl);
     sectionEl.appendChild(ulEl);
 
-    //created a list that shows the assigned individual
+    //created a list that shows the assigned individual with a foor loop
     //eslint-disable-next-line
     for (
       let assigneeInTasks = 0;
+
+      //eslint-disable-next-line
       assigneeInTasks < allTasks[localDataObjects].assignedTo.length;
       assigneeInTasks++
     ) {
@@ -93,6 +100,7 @@ function deleteTask(event) {
   }
 }
 
+//a function to add the delete button on each different sections generated
 function sectionEventListener() {
   //eslint-disable-next-line
   checkLocalStorage();
@@ -104,7 +112,9 @@ function sectionEventListener() {
   }
 }
 
+//rendered all the data onto page to display task
 editorRender();
+
 //create event listener to take in form data
 taskFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
