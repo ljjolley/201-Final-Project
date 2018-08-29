@@ -2,18 +2,20 @@
 var today = new Date();
 var dayOfWeek = today.getDay();
 var allTasks = [];
+var uniqueTasksNames = new Set();
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.
-var Task = function(taskName, assignedTo) {
+var Task = function (taskName, assignedTo) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
   this.startingDate = dayOfWeek;
   this.currentlyAssignedTo =
     assignedTo[randomNumberGenerator(assignedTo.length)];
+  this.isTaskCompleted = false;
   allTasks.push(this);
 };
 // This function rotates through users
-Task.prototype.updateDate = function() {
+Task.prototype.updateDate = function () {
   if (dayOfWeek !== this.startingDate) {
     this.startingDate = dayOfWeek;
 
@@ -32,7 +34,14 @@ Task.prototype.updateDate = function() {
     }
   }
 };
-
+// this let you change the color of the element based on boolean;
+function colorChanger(element, thisPersonsTasks) {
+  if (thisPersonsTasks === false) {
+    element.style.backgroundColor = '#D15360';
+  } else {
+    element.style.backgroundColor = '#7FFFD4';
+  }
+}
 //This function is generates a random number between 0 and the numberOfPeople assigned to the task.
 function randomNumberGenerator(numberOfPeople) {
   return Math.floor(Math.random() * numberOfPeople);
@@ -42,9 +51,24 @@ function randomNumberGenerator(numberOfPeople) {
 function checkLocalStorage() {
   var dataInLocalStorage = JSON.parse(localStorage.getItem('allTasks'));
 
+  // update uniqueTaskNames to be reflect what we just pulled out
+  // of local storage
   if (dataInLocalStorage) {
     allTasks = dataInLocalStorage;
+    allTasks.forEach(function (task) {
+      uniqueTasksNames.add(task.taskName);
+    });
+  } else {
+    allTasks = [];
+    uniqueTasksNames = new Set();
   }
+}
+
+function writeToLocalStorage() {
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+  uniqueTasksNames = new Set(allTasks.map(task => task.taskName));
+
+  // Write to our new data structure
 }
 
 checkLocalStorage();
