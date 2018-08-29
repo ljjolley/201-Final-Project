@@ -3,12 +3,16 @@
 var taskFormEl = document.getElementById('newTaskForm');
 var divEl = document.getElementById('tasks-editor-list');
 var frequencyOfTask = document.getElementById('frequency-of-task');
+var whenToRepeatTask = document.getElementById('when-to-repeat-task');
+var daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var DAYS_IN_A_MONTH = 31;
+var dayOfWeekToRepeatTask;
+var dayOfMonthToRepeatTask;
 
 
 //takes in user data and transforms them to local data
 function editorInput() {
   var frequencyOfTaskValue = frequencyOfTask.value;
-  var dayOfTask = document.getElementById('day-of-task').value;
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   var assignee = [
     event.target.assignee1,
@@ -28,7 +32,7 @@ function editorInput() {
   assignedToList = deleteDuplicatenames(assignedToList);
 
   //eslint-disable-next-line
-  new Task(event.target.task.value.toLowerCase(), assignedToList, frequencyOfTaskValue, dayOfTask);
+  new Task(event.target.task.value.toLowerCase(), assignedToList, frequencyOfTaskValue);
   //eslint-disable-next-line
 
   //store the all task array as 'allTasks' and updates it;
@@ -137,13 +141,8 @@ taskFormEl.addEventListener('submit', function(event) {
   //eslint-disable-next-line
   checkLocalStorage();
   editorRender();
+  assignWhenToRepeatTaskValues();
 });
-
-
-
-var whenToRepeatTask = document.getElementById('when-to-repeat-task');
-var daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var DAYS_IN_A_MONTH = 31;
 
 function updateWhenToRepeatTask(event) {
   whenToRepeatTask.innerHTML = '';
@@ -166,6 +165,18 @@ function updateWhenToRepeatTask(event) {
     }
   } else {
     whenToRepeatTask.style.display = 'none';
+  }
+}
+
+function assignWhenToRepeatTaskValues() {
+  if (whenToRepeatTask.value) {
+    if (frequencyOfTask.value === 'weekly') {
+      dayOfWeekToRepeatTask = daysOfTheWeek.indexOf(whenToRepeatTask.value);
+      console.log(dayOfWeekToRepeatTask);
+    } else if (frequencyOfTask.value === 'monthly') {
+      dayOfMonthToRepeatTask = parseInt(whenToRepeatTask.value);
+      console.log(dayOfMonthToRepeatTask);
+    }
   }
 }
 
