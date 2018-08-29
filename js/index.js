@@ -51,7 +51,6 @@ function showThisPersonsTasks(event) {
   var peoplesTasks = document.getElementById('peoples-tasks');
   var personClickedOn = event.target.textContent;
   var thisPersonsTasks = [];
-
   peoplesTasks.innerHTML = '';
 
   if (personClickedOn) {
@@ -78,14 +77,25 @@ function showThisPersonsTasks(event) {
       }
     }
   }
-
-  for (var i = 0; i < thisPersonsTasks.length; i++) {
-    var ilEl = document.createElement('il');
-    ilEl.textContent = thisPersonsTasks[i];
+  for (let i = 0; i < thisPersonsTasks.length; i++) {
+    var ilEl = document.createElement('li');
+    colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
+    ilEl.addEventListener('click', function (event) {
+      console.log(thisPersonsTasks[i].isTaskCompleted);
+      if (!thisPersonsTasks[i].isTaskCompleted) {
+        thisPersonsTasks[i].isTaskCompleted = true;
+        colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
+        writeToLocalStorage(event);
+      } else {
+        thisPersonsTasks[i].isTaskCompleted = false;
+        colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
+        writeToLocalStorage(event);
+      }
+    });
+    ilEl.style.color = 'white';
+    ilEl.textContent = thisPersonsTasks[i].taskName;
     peoplesTasks.appendChild(ilEl);
   }
-
-  console.log(thisPersonsTasks);
   return thisPersonsTasks;
 }
 
