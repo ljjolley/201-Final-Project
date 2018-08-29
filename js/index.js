@@ -102,5 +102,4 @@ function showThisPersonsTasks(event) {
   }
   return thisPersonsTasks;
 }
-
 render(getAllAssignees(allTasks));
