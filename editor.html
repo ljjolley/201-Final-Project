@@ -30,18 +30,33 @@
     <form id="newTaskForm">
       <fieldset>
         <legend>Task Creator</legend>
-        <label for="task">Task Name:</label>
-        <input name="task" type="text" size="15" required="required" placeholder="Task" />
-        <label for="assignee1">Name</label>
-        <input name="assignee1" type="text" size="15" required="required" placeholder="Name" />
-        <label for="assignee2">Name</label>
-        <input name="assignee2" type="text" size="15" placeholder="Name" />
-        <label for="assignee3">Name</label>
-        <input name="assignee3" type="text" size="15" placeholder="Name" />
-        <label for="assignee4">Name</label>
-        <input name="assignee4" type="text" size="15" placeholder="Name" />
-        <label for="assignee5">Name</label>
-        <input name="assignee5" type="text" size="15" placeholder="Name" />
+        <div id="taskName">
+          <label for="task">Task:</label>
+          <input name="task" type="text" size="15" required="required" placeholder="Task" />
+        </div>
+        <div id="taskAssignees">
+          <div>
+            <label for="assignee1">Name</label>
+            <input name="assignee1" type="text" size="15" required="required" placeholder="Name" />
+          </div>
+          <div>
+            <label for="assignee2">Name</label>
+            <input name="assignee2" type="text" size="15" placeholder="Name" />
+          </div>
+          <div>
+            <label for="assignee3">Name</label>
+            <input name="assignee3" type="text" size="15" placeholder="Name" />
+          </div>
+          <div>
+            <label for="assignee4">Name</label>
+            <input name="assignee4" type="text" size="15" placeholder="Name" />
+          </div>
+          <div>
+            <label for="assignee5">Name</label>
+            <input name="assignee5" type="text" size="15" placeholder="Name" />
+          </div>
+        </div>
+        <br clear="both" />
         <button type="submit">Submit</button>
       </fieldset>
     </form>
