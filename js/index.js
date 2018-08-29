@@ -17,7 +17,7 @@ function getAllAssignees(tasks) {
   return allAssignees;
 }
 //eslint-disable-next-line
-console.log(getAllAssignees(allTasks));
+
 
 //render the assignee and display them as lists
 function render(getAllAssignees) {
@@ -66,16 +66,16 @@ function showThisPersonsTasks(event) {
     var ilEl = document.createElement('li');
     colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
     ilEl.addEventListener('click', function (event) {
-      console.log(thisPersonsTasks[i].isTaskCompleted);
-      if (!thisPersonsTasks[i].isTaskCompleted) {
+      if (thisPersonsTasks[i].isTaskCompleted === false) {
         thisPersonsTasks[i].isTaskCompleted = true;
-        colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
         writeToLocalStorage(event);
+        colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
       } else {
         thisPersonsTasks[i].isTaskCompleted = false;
-        colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
         writeToLocalStorage(event);
+        colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
       }
+      colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
     });
     ilEl.style.color = 'white';
     ilEl.textContent = thisPersonsTasks[i].taskName;
