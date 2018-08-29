@@ -11,6 +11,7 @@ var Task = function (taskName, assignedTo) {
   this.startingDate = dayOfWeek;
   this.currentlyAssignedTo =
     assignedTo[randomNumberGenerator(assignedTo.length)];
+  this.isTaskCompleted = false;
   allTasks.push(this);
 };
 // This function rotates through users
@@ -33,7 +34,14 @@ Task.prototype.updateDate = function () {
     }
   }
 };
-
+// this let you change the color of the element based on boolean;
+function colorChanger(element, thisPersonsTasks) {
+  if (thisPersonsTasks === false) {
+    element.style.backgroundColor = '#D15360';
+  } else {
+    element.style.backgroundColor = '#7FFFD4';
+  }
+}
 //This function is generates a random number between 0 and the numberOfPeople assigned to the task.
 function randomNumberGenerator(numberOfPeople) {
   return Math.floor(Math.random() * numberOfPeople);
@@ -47,7 +55,9 @@ function checkLocalStorage() {
   // of local storage
   if (dataInLocalStorage) {
     allTasks = dataInLocalStorage;
-    allTasks.forEach(task => uniqueTasksNames.add(task.taskName));
+    allTasks.forEach(function (task) {
+      uniqueTasksNames.add(task.taskName);
+    });
   } else {
     allTasks = [];
     uniqueTasksNames = new Set();

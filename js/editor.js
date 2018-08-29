@@ -17,7 +17,9 @@ function editorInput() {
   if (uniqueTasksNames.has(event.target.task.value.toLowerCase())) {
     alert('This task name is already in use, please choose a new task name.');
     event.target.task.value = null;
-    assignee.forEach(assignee => assignee.value = null);
+    assignee.forEach(function (assignee) {
+      assignee.value = null;
+    });
     return;
   }
   //clears out user data after the submit button and runs for loop to push data onto assigned list array
@@ -50,6 +52,7 @@ function deleteDuplicatenames(tasks) {
 
 //renders the local storage to display the tasks as lists
 function editorRender() {
+  checkLocalStorage();
   divEl.innerHTML = '';
 
   //run a loop to create elements based on local storage
@@ -65,6 +68,10 @@ function editorRender() {
     var buttonEl = document.createElement('button');
     var pEl = document.createElement('p');
     var ulEl = document.createElement('ul');
+
+    // this let you change the color of the element based on boolean;
+    console.log(allTasks[localDataObjects].isTaskCompleted);
+    colorChanger(sectionEl, allTasks[localDataObjects].isTaskCompleted);
 
     //added text content to each element
     //eslint-disable-next-line
