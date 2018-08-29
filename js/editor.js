@@ -2,9 +2,16 @@
 //create variable to retrieve form ID
 var taskFormEl = document.getElementById('newTaskForm');
 var divEl = document.getElementById('tasks-editor-list');
+var frequencyOfTask = document.getElementById('frequency-of-task');
+var whenToRepeatTask = document.getElementById('when-to-repeat-task');
+var daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var DAYS_IN_A_MONTH = 31;
+var dayOfWeekToRepeatTask;
+var dayOfMonthToRepeatTask;
 
 //takes in user data and transforms them to local data
 function editorInput() {
+  var frequencyOfTaskValue = frequencyOfTask.value;
   var assignedToList = []; //pushes the name part onto empty array and push it as a variable
   var assignee = [
     event.target.assignee1,
@@ -23,8 +30,11 @@ function editorInput() {
   }
   assignedToList = deleteDuplicatenames(assignedToList);
 
+  assignWhenToRepeatTaskValues();
   //eslint-disable-next-line
-  new Task(event.target.task.value.toLowerCase(), assignedToList);
+  new Task(event.target.task.value.toLowerCase(), assignedToList, frequencyOfTaskValue, dayOfWeekToRepeatTask, dayOfMonthToRepeatTask);
+  //eslint-disable-next-line
+
   //store the all task array as 'allTasks' and updates it;
   //eslint-disable-next-line
   localStorage.setItem('allTasks', JSON.stringify(allTasks));
@@ -132,3 +142,42 @@ taskFormEl.addEventListener('submit', function(event) {
   checkLocalStorage();
   editorRender();
 });
+
+function updateWhenToRepeatTask(event) {
+  whenToRepeatTask.innerHTML = '';
+
+  if (event.target.value === 'weekly') {
+    whenToRepeatTask.style.display = 'inline-block';
+    for (var i = 0; i < daysOfTheWeek.length; i++) {
+      var optionEl = document.createElement('option');
+      optionEl.textContent = daysOfTheWeek[i];
+      optionEl.setAttribute('value', daysOfTheWeek[i]);
+      whenToRepeatTask.appendChild(optionEl);
+    }
+  } else if (event.target.value === 'monthly') {
+    for (var i = 1; i <= DAYS_IN_A_MONTH; i++) {
+      whenToRepeatTask.style.display = 'inline-block';
+      var optionEl = document.createElement('option');
+      optionEl.textContent = i;
+      optionEl.setAttribute('value', i);
+      whenToRepeatTask.appendChild(optionEl);
+    }
+  } else {
+    whenToRepeatTask.style.display = 'none';
+  }
+}
+
+function assignWhenToRepeatTaskValues() {
+  if (frequencyOfTask.value === 'weekly') {
+    dayOfWeekToRepeatTask = daysOfTheWeek.indexOf(whenToRepeatTask.value);
+    dayOfMonthToRepeatTask = null;
+  } else if (frequencyOfTask.value === 'monthly') {
+    dayOfMonthToRepeatTask = parseInt(whenToRepeatTask.value);
+    dayOfWeekToRepeatTask = null;
+  } else {
+    dayOfMonthToRepeatTask = null;
+    dayOfWeekToRepeatTask = null;
+  }
+}
+
+frequencyOfTask.addEventListener('click', updateWhenToRepeatTask);

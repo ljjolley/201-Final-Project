@@ -28,12 +28,22 @@
 
   <main id="editor-main">
     <form id="newTaskForm">
+      <legend>Task Creator</legend>
       <fieldset>
-        <legend>Task Creator</legend>
         <div id="taskName">
           <label for="task">Task:</label>
           <input name="task" type="text" size="15" required="required" placeholder="Task" />
         </div>
+
+        <select id="frequency-of-task" name="frequency-of-task">
+          <option value="one-off" selected="selected">One Off</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+
+        <select id="when-to-repeat-task" name="when-to-repeat-task"></select>
+
         <div id="taskAssignees">
           <div>
             <label for="assignee1">Name</label>
