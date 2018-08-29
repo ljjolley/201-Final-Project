@@ -17,13 +17,8 @@ function getAllAssignees(tasks) {
 
   return allAssignees;
 }
-<<<<<<< HEAD
 
 console.log(getAllAssignees(allTasks));
-=======
-//eslint-disable-next-line
-
->>>>>>> c809b26d7f810430765ad1aa3dd9e9c897ab4d79
 
 //render the assignee and display them as lists
 function render(getAllAssignees) {
@@ -90,16 +85,16 @@ function showThisPersonsTasks(event) {
     var ilEl = document.createElement('li');
     colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
     ilEl.addEventListener('click', function (event) {
-      if (thisPersonsTasks[i].isTaskCompleted === false) {
+      
+      if (!thisPersonsTasks[i].isTaskCompleted) {
         thisPersonsTasks[i].isTaskCompleted = true;
+        colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
         writeToLocalStorage(event);
-        colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
       } else {
         thisPersonsTasks[i].isTaskCompleted = false;
+        colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
         writeToLocalStorage(event);
-        colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
       }
-      colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
     });
     ilEl.style.color = 'white';
     ilEl.textContent = thisPersonsTasks[i].taskName;
@@ -107,23 +102,5 @@ function showThisPersonsTasks(event) {
   }
   return thisPersonsTasks;
 }
-<<<<<<< HEAD
 
 render(getAllAssignees(allTasks));
-=======
-//eslint-disable-next-line
-render(getAllAssignees(allTasks));
-
-//create event listener to take in form data
-taskFormEl.addEventListener('submit', function(event) {
-  event.preventDefault();
-  editorInput(event);
-  //eslint-disable-next-line
-  checkLocalStorage();
-  editorRender();
-
-  // this bit adds my animation class
-  var lastAddedTask = document.getElementById('tasks-editor-list').lastChild;
-  lastAddedTask.className = 'animateTaskIn';
-});
->>>>>>> c809b26d7f810430765ad1aa3dd9e9c897ab4d79
