@@ -56,14 +56,10 @@ function showThisPersonsTasks(event) {
   if (personClickedOn) {
     //eslint-disable-next-line
     for (var i = 0; i < allTasks.length; i++) {
-
       //eslint-disable-next-line
       if (personClickedOn === allTasks[i].currentlyAssignedTo) {
         //eslint-disable-next-line
-        if (checkFrequencyOfTask(allTasks[i].frequencyOfTask, allTasks[i].dayTaskCreated)) {
-          //eslint-disable-next-line
-          thisPersonsTasks.push(allTasks[i].taskName);
-        }
+        thisPersonsTasks.push(allTasks[i].taskName);
       }
     }
   }
@@ -79,25 +75,3 @@ function showThisPersonsTasks(event) {
 }
 //eslint-disable-next-line
 render(getAllAssignees(allTasks));
-
-// Returns true is today is the day a job should be displayed based off its frequencyOfTask propery
-function checkFrequencyOfTask(howOftenTheTaskRepeats, dateTaskWasCreated) {
-  switch (howOftenTheTaskRepeats) {
-  case 'weekly':
-    var recur = moment(dateTaskWasCreated).recur().every(7).days();
-    if (recur.matches(today)) {
-      return true;
-    } else {
-      return false;
-    }
-  case 'monthly':
-    var recur = moment(dateTaskWasCreated).recur().every(1).months();
-    if (recur.matches(today)) {
-      return true;
-    } else {
-      return false;
-    }
-  default:
-    return true;
-  }
-}

@@ -31,8 +31,9 @@ function editorInput() {
   }
   assignedToList = deleteDuplicatenames(assignedToList);
 
+  assignWhenToRepeatTaskValues();
   //eslint-disable-next-line
-  new Task(event.target.task.value.toLowerCase(), assignedToList, frequencyOfTaskValue);
+  new Task(event.target.task.value.toLowerCase(), assignedToList, frequencyOfTaskValue, dayOfWeekToRepeatTask, dayOfMonthToRepeatTask);
   //eslint-disable-next-line
 
   //store the all task array as 'allTasks' and updates it;
@@ -141,7 +142,6 @@ taskFormEl.addEventListener('submit', function(event) {
   //eslint-disable-next-line
   checkLocalStorage();
   editorRender();
-  assignWhenToRepeatTaskValues();
 });
 
 function updateWhenToRepeatTask(event) {
@@ -172,10 +172,13 @@ function assignWhenToRepeatTaskValues() {
   if (whenToRepeatTask.value) {
     if (frequencyOfTask.value === 'weekly') {
       dayOfWeekToRepeatTask = daysOfTheWeek.indexOf(whenToRepeatTask.value);
-      console.log(dayOfWeekToRepeatTask);
+      dayOfMonthToRepeatTask = null;
     } else if (frequencyOfTask.value === 'monthly') {
       dayOfMonthToRepeatTask = parseInt(whenToRepeatTask.value);
-      console.log(dayOfMonthToRepeatTask);
+      dayOfWeekToRepeatTask = null;
+    } else {
+      dayOfMonthToRepeatTask = null;
+      dayOfWeekToRepeatTask = null;
     }
   }
 }
