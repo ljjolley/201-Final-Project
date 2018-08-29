@@ -14,6 +14,14 @@ function editorInput() {
     event.target.assignee5
   ];
 
+  if (uniqueTasksNames.has(event.target.task.value.toLowerCase())) {
+    alert('This task name is already in use, please choose a new task name.');
+    event.target.task.value = null;
+    assignee.forEach(function (assignee) {
+      assignee.value = null;
+    });
+    return;
+  }
   //clears out user data after the submit button and runs for loop to push data onto assigned list array
   for (let i = 0; i < assignee.length; i++) {
     if (assignee[i].value) {
@@ -27,7 +35,7 @@ function editorInput() {
   new Task(event.target.task.value.toLowerCase(), assignedToList);
   //store the all task array as 'allTasks' and updates it;
   //eslint-disable-next-line
-  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+  writeToLocalStorage();
   event.target.task.value = null;
 }
 
@@ -44,6 +52,7 @@ function deleteDuplicatenames(tasks) {
 
 //renders the local storage to display the tasks as lists
 function editorRender() {
+  checkLocalStorage();
   divEl.innerHTML = '';
 
   //run a loop to create elements based on local storage
@@ -51,8 +60,7 @@ function editorRender() {
   for (
     let localDataObjects = 0;
     //eslint-disable-next-line
-    localDataObjects < allTasks.length;
-    localDataObjects++
+    localDataObjects < allTasks.length; localDataObjects++
   ) {
     var sectionEl = document.createElement('section');
     divEl.appendChild(sectionEl);
@@ -60,6 +68,10 @@ function editorRender() {
     var buttonEl = document.createElement('button');
     var pEl = document.createElement('p');
     var ulEl = document.createElement('ul');
+
+    // this let you change the color of the element based on boolean;
+    console.log(allTasks[localDataObjects].isTaskCompleted);
+    colorChanger(sectionEl, allTasks[localDataObjects].isTaskCompleted);
 
     //added text content to each element
     //eslint-disable-next-line
@@ -78,8 +90,7 @@ function editorRender() {
     for (
       let assigneeInTasks = 0;
       //eslint-disable-next-line
-      assigneeInTasks < allTasks[localDataObjects].assignedTo.length;
-      assigneeInTasks++
+      assigneeInTasks < allTasks[localDataObjects].assignedTo.length; assigneeInTasks++
     ) {
       var liEl = document.createElement('li');
       //eslint-disable-next-line
@@ -102,7 +113,7 @@ function deleteTask(event) {
         //eslint-disable-next-line
         allTasks.splice(i, 1);
         //eslint-disable-next-line
-        localStorage.setItem('allTasks', JSON.stringify(allTasks));
+        writeToLocalStorage();
         event.target.parentNode.remove();
       }
     }
@@ -115,7 +126,7 @@ function sectionEventListener() {
   checkLocalStorage();
   var taskSectionEls = document.getElementsByTagName('section');
   for (let i = 0; i < taskSectionEls.length; i++) {
-    taskSectionEls[i].addEventListener('click', function(event) {
+    taskSectionEls[i].addEventListener('click', function (event) {
       deleteTask(event);
     });
   }
@@ -125,7 +136,7 @@ function sectionEventListener() {
 editorRender();
 
 //create event listener to take in form data
-taskFormEl.addEventListener('submit', function(event) {
+taskFormEl.addEventListener('submit', function (event) {
   event.preventDefault();
   editorInput(event);
   //eslint-disable-next-line
