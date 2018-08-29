@@ -1,6 +1,7 @@
 'use strict';
 var today = new Date();
 var dayOfWeek = today.getDay();
+var dayOfMonth = today.getDate();
 var allTasks = [];
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.

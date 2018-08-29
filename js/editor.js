@@ -9,7 +9,6 @@ var DAYS_IN_A_MONTH = 31;
 var dayOfWeekToRepeatTask;
 var dayOfMonthToRepeatTask;
 
-
 //takes in user data and transforms them to local data
 function editorInput() {
   var frequencyOfTaskValue = frequencyOfTask.value;
@@ -169,17 +168,15 @@ function updateWhenToRepeatTask(event) {
 }
 
 function assignWhenToRepeatTaskValues() {
-  if (whenToRepeatTask.value) {
-    if (frequencyOfTask.value === 'weekly') {
-      dayOfWeekToRepeatTask = daysOfTheWeek.indexOf(whenToRepeatTask.value);
-      dayOfMonthToRepeatTask = null;
-    } else if (frequencyOfTask.value === 'monthly') {
-      dayOfMonthToRepeatTask = parseInt(whenToRepeatTask.value);
-      dayOfWeekToRepeatTask = null;
-    } else {
-      dayOfMonthToRepeatTask = null;
-      dayOfWeekToRepeatTask = null;
-    }
+  if (frequencyOfTask.value === 'weekly') {
+    dayOfWeekToRepeatTask = daysOfTheWeek.indexOf(whenToRepeatTask.value);
+    dayOfMonthToRepeatTask = null;
+  } else if (frequencyOfTask.value === 'monthly') {
+    dayOfMonthToRepeatTask = parseInt(whenToRepeatTask.value);
+    dayOfWeekToRepeatTask = null;
+  } else {
+    dayOfMonthToRepeatTask = null;
+    dayOfWeekToRepeatTask = null;
   }
 }
 
