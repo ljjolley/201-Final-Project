@@ -64,15 +64,15 @@ function showThisPersonsTasks(event) {
         if (allTasks[i].frequencyOfTask === 'weekly' && allTasks[i].dayOfWeekToRepeatTask === dayOfWeek) {
           thisPersonsTasks.push(allTasks[i]);
 
-        // Checks if the task should be displayed today (this day of the month)
+          // Checks if the task should be displayed today (this day of the month)
         } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask === dayOfMonth) {
           thisPersonsTasks.push(allTasks[i]);
 
-        // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
+          // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
         } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
           thisPersonsTasks.push(allTasks[i]);
 
-        // Pushes the task to thisPersonsTasks if the task is a one-off or daily task
+          // Pushes the task to thisPersonsTasks if the task is a one-off or daily task
         } else if (allTasks[i].frequencyOfTask === 'one-off' || allTasks[i].frequencyOfTask === 'daily') {
           thisPersonsTasks.push(allTasks[i]);
         }
@@ -97,7 +97,7 @@ function showThisPersonsTasks(event) {
       colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
     });
     ilEl.style.color = 'white';
-    ilEl.textContent = thisPersonsTasks[i].taskName;
+    ilEl.textContent = thisPersonsTasks[i].taskName + ': ' + thisPersonsTasks[i].frequencyOfTask;
     peoplesTasks.appendChild(ilEl);
   }
   return thisPersonsTasks;
