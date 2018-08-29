@@ -41,14 +41,18 @@
         </select>
 
         <select id="day-of-task" name="day-of-task">
-            <option value="sunday" selected="selected">Sunday</option>
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
-          </select>
+          <option value="sunday" selected="selected">Sunday</option>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
+        </select>
+
+        <input type="date" id="day-of-month" name="day-of-month"
+               value=""
+               min="" max="2049-12-31" />
 
         <label for="assignee1">Name</label>
         <input name="assignee1" type="text" size="15" required="required" placeholder="Name" />
