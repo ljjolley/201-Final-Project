@@ -78,6 +78,7 @@ function editorRender() {
     var buttonEl = document.createElement('button');
     var pEl = document.createElement('p');
     var ulEl = document.createElement('ul');
+    var h3El = document.createElement('h3');
 
     // this let you change the color of the element based on boolean;
     console.log(allTasks[localDataObjects].isTaskCompleted);
@@ -86,6 +87,7 @@ function editorRender() {
     //added text content to each element
     //eslint-disable-next-line
     h2El.textContent = allTasks[localDataObjects].taskName;
+    h3El.textContent = allTasks[localDataObjects].frequencyOfTask;
     buttonEl.textContent = 'Delete Task';
     pEl.textContent = 'Assigned to:';
 
@@ -94,6 +96,7 @@ function editorRender() {
     sectionEl.appendChild(buttonEl);
     sectionEl.appendChild(pEl);
     sectionEl.appendChild(ulEl);
+    sectionEl.appendChild(h3El);
 
     //created a list that shows the assigned individual with a foor loop
     //eslint-disable-next-line
