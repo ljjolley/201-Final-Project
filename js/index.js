@@ -85,16 +85,3 @@ function showThisPersonsTasks(event) {
 }
 //eslint-disable-next-line
 render(getAllAssignees(allTasks));
-
-//create event listener to take in form data
-taskFormEl.addEventListener('submit', function(event) {
-  event.preventDefault();
-  editorInput(event);
-  //eslint-disable-next-line
-  checkLocalStorage();
-  editorRender();
-
-  // this bit adds my animation class
-  var lastAddedTask = document.getElementById('tasks-editor-list').lastChild;
-  lastAddedTask.className = 'animateTaskIn';
-});
