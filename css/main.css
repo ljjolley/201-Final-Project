@@ -28,7 +28,7 @@ header a {
   font-size: 1.3em;
   color: white;
   text-decoration: none;
-  /* text-shadow: 1px 1px 3px black; */
+  /* text-shadow: 0.063em 0.063em 0.188em black; */
 }
 
 main {
@@ -45,15 +45,15 @@ h1 {
 
 form {
   background-color: #eee;
-  border: 1px solid #666;
-  box-shadow: 1px 1px 3px #666;
-  border-radius: 10px;
+  border: 0.063em solid #666;
+  box-shadow: 0.063em 0.063em 0.188em #666;
+  border-radius: 0.625em;
   padding: 1em;
   margin-bottom: 1em;
 }
 
 legend {
-  margin-bottom: 20px;
+  margin-bottom: 1.250em;
 }
 
 fieldset legend {
@@ -62,11 +62,15 @@ fieldset legend {
 
 label {
   display: inline-block;
-  width: 60px;
+  width: 7em;
+}
+
+#task-instructions {
+  padding-bottom: 10em;
 }
 
 #taskName {
-  margin-right: 20px;
+  margin-right: 1.250em;
 }
 
 #taskName, #taskAssignees {
@@ -74,13 +78,13 @@ label {
 }
 
 #taskAssignees div {
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
 }
 
 input {
   padding: 0.4em 2em 0.4em 1em;
-  border-radius: 5px;
-  border: 0.5px solid black;
+  border-radius: 0.313em;
+  border: 0.031em solid black;
 }
 
 form button {
@@ -88,21 +92,20 @@ form button {
   width: 15em;
   display: block;
   padding: 0.7em;
-  border: 2px solid grey;
-  border-radius: 6px;
+  border: 0.125em solid grey;
+  border-radius: 0.375em;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.875em;
   background-color: #eff446;
   cursor: pointer;
 }
 
 section {
-  
   background-color: #eee;
-  border: 1px solid #666;
-  box-shadow: 1px 1px 3px #666;
+  border: 0.063em solid #666;
+  box-shadow: 0.063em 0.063em 0.188em #666;
   overflow: auto;
-  border-radius: 10px;
+  border-radius: 0.625em;
   padding: 1.2em 2em 2.3em 2em;
   margin-bottom: 1em;
 }
@@ -131,7 +134,7 @@ section a {
 
 section img {
   float: left;
-  margin-right: 20px;
+  margin-right: 1.250em;
 }
 
 button + p {
@@ -163,9 +166,9 @@ section ul:first-child {
 
 section ul:first-child li {
   cursor: pointer;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
+  border: 0.063em solid black;
+  border-radius: 0.625em;
+  padding: 0.625em;
   margin-bottom: 0.5em;
   text-align: center;
 }
@@ -173,12 +176,12 @@ section ul:first-child li {
 footer {
   background-color: rgb(64, 161, 184);
   height: 4em;
-  height: 50px;
+  height: 3.125em;
   text-align: center;
-  line-height: 50px;
+  line-height: 3.125em;
 }
 
-/* .animateTaskIn {
+.animateTaskIn {
   animation: highlightAndFade 1s;
   animation-timing-function: ease-out; 
 }
@@ -191,17 +194,3 @@ footer {
     background-color: #eeeeee;
   }
 }
-
-//create event listener to take in form data
-taskFormEl.addEventListener('submit', function(event) {
-  event.preventDefault();
-  editorInput(event);
-  //eslint-disable-next-line
-  checkLocalStorage();
-  editorRender();
-  
-  // this bit adds my animation class
-  var lastAddedTask = document.getElementById('tasks-editor-list').lastChild;
-  lastAddedTask.className = "animateTaskIn"
-});
-*/
