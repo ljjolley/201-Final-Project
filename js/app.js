@@ -2,9 +2,10 @@
 var today = new Date();
 var dayOfWeek = today.getDay();
 var allTasks = [];
+var uniqueTasksNames = new Set();
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.
-var Task = function(taskName, assignedTo) {
+var Task = function (taskName, assignedTo) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
   this.startingDate = dayOfWeek;
@@ -13,7 +14,7 @@ var Task = function(taskName, assignedTo) {
   allTasks.push(this);
 };
 // This function rotates through users
-Task.prototype.updateDate = function() {
+Task.prototype.updateDate = function () {
   if (dayOfWeek !== this.startingDate) {
     this.startingDate = dayOfWeek;
 
@@ -42,9 +43,22 @@ function randomNumberGenerator(numberOfPeople) {
 function checkLocalStorage() {
   var dataInLocalStorage = JSON.parse(localStorage.getItem('allTasks'));
 
+  // update uniqueTaskNames to be reflect what we just pulled out
+  // of local storage
   if (dataInLocalStorage) {
     allTasks = dataInLocalStorage;
+    allTasks.forEach(task => uniqueTasksNames.add(task.taskName));
+  } else {
+    allTasks = [];
+    uniqueTasksNames = new Set();
   }
+}
+
+function writeToLocalStorage() {
+  localStorage.setItem('allTasks', JSON.stringify(allTasks));
+  uniqueTasksNames = new Set(allTasks.map(task => task.taskName));
+
+  // Write to our new data structure
 }
 
 checkLocalStorage();
