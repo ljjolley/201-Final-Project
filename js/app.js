@@ -1,19 +1,24 @@
 'use strict';
 var today = new Date();
 var dayOfWeek = today.getDay();
+var dayOfMonth = today.getDate();
 var allTasks = [];
 var uniqueTasksNames = new Set();
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.
-var Task = function (taskName, assignedTo) {
+var Task = function(taskName, assignedTo, frequencyOfTask, dayOfWeekToRepeatTask, dayOfMonthToRepeatTask) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
   this.startingDate = dayOfWeek;
+  this.frequencyOfTask = frequencyOfTask;
+  this.dayOfWeekToRepeatTask = dayOfWeekToRepeatTask;
+  this.dayOfMonthToRepeatTask = dayOfMonthToRepeatTask;
   this.currentlyAssignedTo =
     assignedTo[randomNumberGenerator(assignedTo.length)];
   this.isTaskCompleted = false;
   allTasks.push(this);
 };
+
 // This function rotates through users
 Task.prototype.updateDate = function () {
   if (dayOfWeek !== this.startingDate) {

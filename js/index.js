@@ -1,6 +1,7 @@
 'use strict';
 
 var mainEl = document.getElementById('main');
+var NumberOfDaysThisMonth = moment().daysInMonth();
 
 // Creates an array of all people who are assigned a task
 function getAllAssignees(tasks) {
@@ -16,8 +17,8 @@ function getAllAssignees(tasks) {
 
   return allAssignees;
 }
-//eslint-disable-next-line
 
+console.log(getAllAssignees(allTasks));
 
 //render the assignee and display them as lists
 function render(getAllAssignees) {
@@ -53,14 +54,32 @@ function showThisPersonsTasks(event) {
   peoplesTasks.innerHTML = '';
 
   if (personClickedOn) {
-    //eslint-disable-next-line
+    // console.log(allTasks[0].taskName);
+
     for (var i = 0; i < allTasks.length; i++) {
-      //eslint-disable-next-line
+      // Checks if the person who was clicked on matches who the task is currently assigned to
       if (personClickedOn === allTasks[i].currentlyAssignedTo) {
-        //eslint-disable-next-line
-        thisPersonsTasks.push(allTasks[i]);
+
+        // Checks if the task should be displayed today (this day of the week)
+        if (allTasks[i].frequencyOfTask === 'weekly' && allTasks[i].dayOfWeekToRepeatTask === dayOfWeek) {
+          thisPersonsTasks.push(allTasks[i]);
+
+        // Checks if the task should be displayed today (this day of the month)
+        } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask === dayOfMonth) {
+          thisPersonsTasks.push(allTasks[i]);
+
+        // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
+        } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
+          thisPersonsTasks.push(allTasks[i]);
+
+        // Pushes the task to thisPersonsTasks if the task is a one-off or daily task
+        } else if (allTasks[i].frequencyOfTask === 'one-off' || allTasks[i].frequencyOfTask === 'daily') {
+          thisPersonsTasks.push(allTasks[i]);
+        }
       }
     }
+
+    console.log(thisPersonsTasks);
   }
   for (let i = 0; i < thisPersonsTasks.length; i++) {
     var ilEl = document.createElement('li');
@@ -83,5 +102,4 @@ function showThisPersonsTasks(event) {
   }
   return thisPersonsTasks;
 }
-//eslint-disable-next-line
 render(getAllAssignees(allTasks));

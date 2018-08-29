@@ -10,6 +10,12 @@
       "browser": true,
       "es6": true
     },
+    "globals": {
+      "allTasks": true,
+      "today": true,
+      "dayOfWeek": true,
+      "dayOfMonth": true
+    },
     "rules": {
       "eqeqeq": ["error", "always"],
       "no-console": "off",
