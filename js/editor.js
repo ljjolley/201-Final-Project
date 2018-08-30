@@ -75,10 +75,10 @@ function editorRender() {
     var sectionEl = document.createElement('section');
     divEl.appendChild(sectionEl);
     var h2El = document.createElement('h2');
+    var h3El = document.createElement('h3');
     var buttonEl = document.createElement('button');
     var pEl = document.createElement('p');
     var ulEl = document.createElement('ul');
-    var h3El = document.createElement('h3');
 
     // this let you change the color of the element based on boolean;
     console.log(allTasks[localDataObjects].isTaskCompleted);
@@ -86,17 +86,17 @@ function editorRender() {
 
     //added text content to each element
     //eslint-disable-next-line
-    h2El.textContent = allTasks[localDataObjects].taskName;
-    h3El.textContent = allTasks[localDataObjects].frequencyOfTask;
+    h2El.textContent = allTasks[localDataObjects].taskName; 
+    h3El.textContent = 'Frequency: ' + allTasks[localDataObjects].frequencyOfTask;
     buttonEl.textContent = 'Delete Task';
     pEl.textContent = 'Assigned to:';
 
     //appended the elements
     sectionEl.appendChild(h2El);
+    sectionEl.appendChild(h3El);
     sectionEl.appendChild(buttonEl);
     sectionEl.appendChild(pEl);
     sectionEl.appendChild(ulEl);
-    sectionEl.appendChild(h3El);
 
     //created a list that shows the assigned individual with a foor loop
     //eslint-disable-next-line
@@ -155,6 +155,9 @@ taskFormEl.addEventListener('submit', function (event) {
   //eslint-disable-next-line
   checkLocalStorage();
   editorRender();
+
+  var lastAddedTask = document.getElementById('tasks-editor-list').lastChild;
+  lastAddedTask.className = "animateTaskIn";
 });
 
 function updateWhenToRepeatTask(event) {
