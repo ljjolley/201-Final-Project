@@ -1,6 +1,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #ccc;
+  background-image: url(../img/background.jpg);
+  background-size: cover;
 }
 
 header {
@@ -53,7 +55,7 @@ form {
 }
 
 legend {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 fieldset legend {
@@ -70,19 +72,22 @@ label {
 }
 
 #taskName {
-  margin-right: 1.250em;
+  margin-right: 1.25em;
 }
 
 #taskName,
 #taskAssignees {
   float: left;
 }
-
+#when-to-repeat-task {
+  display: none;
+}
 #taskAssignees div {
   margin-bottom: 0.625em;
 }
 
-input, select {
+input,
+select {
   padding: 0.4em 2em 0.4em 1em;
   border-radius: 0.313em;
   border: 0.031em solid black;
@@ -114,6 +119,13 @@ section {
 
 section button {
   float: right;
+  margin: 2em auto 1em;
+  width: 15em;
+  display: block;
+  padding: 0.7em;
+  border: 0.125em solid grey;
+  border-radius: 0.375em;
+  font-weight: bold;
 }
 
 section button:hover {
@@ -127,16 +139,22 @@ section h2 {
 }
 
 section a {
-  text-decoration: none;
+  text-decoration: underline;
   color: black;
+}
+main p {
+  line-height: 1.5em;
+}
+main section {
+  line-height: 1.5em;
 }
 
 section img {
   float: left;
-  margin-right: 1.250em;
+  margin-right: 1.25em;
 }
 
-button+p {
+button + p {
   float: left;
   margin-right: 0.5em;
   padding: 0.45em 0;
@@ -147,7 +165,7 @@ li {
   text-transform: capitalize;
 }
 
-p+ul li {
+p + ul li {
   float: left;
   margin-right: 1em;
   padding: 0.4em 2em 0.4em 1em;
@@ -182,6 +200,11 @@ footer {
   height: 3.125em;
   text-align: center;
   line-height: 3.125em;
+  color: white;
+}
+footer a {
+  text-decoration: underline;
+  color: white;
 }
 
 #peoples-tasks li {
@@ -194,7 +217,7 @@ footer {
 
 .happy-helpers p {
   line-height: 1.3em;
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .linkedInLogo {
@@ -206,7 +229,7 @@ footer {
 
 .animateTaskIn {
   animation: highlightAndFade 1s;
-  animation-timing-function: ease-out; 
+  animation-timing-function: ease-out;
 }
 
 @keyframes highlightAndFade {
@@ -214,6 +237,6 @@ footer {
     background-color: rgb(255, 156, 166);
   }
   100% {
-    background-color: #D15360;
+    background-color: #d15360;
   }
 }

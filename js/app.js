@@ -9,7 +9,13 @@ var allTasks = [];
 var uniqueTasksNames = new Set();
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.
-var Task = function(taskName, assignedTo, frequencyOfTask, dayOfWeekToRepeatTask, dayOfMonthToRepeatTask) {
+var Task = function(
+  taskName,
+  assignedTo,
+  frequencyOfTask,
+  dayOfWeekToRepeatTask,
+  dayOfMonthToRepeatTask
+) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
   this.startingDate = formattedToday;
@@ -21,6 +27,7 @@ var Task = function(taskName, assignedTo, frequencyOfTask, dayOfWeekToRepeatTask
   this.isTaskCompleted = false;
   allTasks.push(this);
 };
+
 
 // Rotates through assignees
 function updateDate(taskToRotateAssignee) {
@@ -48,7 +55,7 @@ function colorChanger(element, thisPersonsTasks) {
   if (thisPersonsTasks === false) {
     element.style.backgroundColor = '#D15360';
   } else {
-    element.style.backgroundColor = '#7FFFD4';
+    element.style.backgroundColor = '#28cc22';
   }
 }
 
@@ -64,7 +71,7 @@ function checkLocalStorage() {
   // update uniqueTaskNames to reflect what was just pulled out of local storage
   if (dataInLocalStorage) {
     allTasks = dataInLocalStorage;
-    allTasks.forEach(function (task) {
+    allTasks.forEach(function(task) {
       uniqueTasksNames.add(task.taskName);
     });
   } else {
@@ -114,3 +121,4 @@ function rotateTaskAssignees() {
 
 checkLocalStorage();
 rotateTaskAssignees();
+
