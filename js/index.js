@@ -1,7 +1,9 @@
 'use strict';
 
 var mainEl = document.getElementById('main');
-var NumberOfDaysThisMonth = moment().daysInMonth();
+
+console.log(NumberOfDaysThisMonth);
+console.log(dayOfMonth);
 
 // Creates an array of all people who are assigned a task
 function getAllAssignees(tasks) {
@@ -67,31 +69,23 @@ function showThisPersonsTasks(event) {
       // Checks if the person who was clicked on matches who the task is currently assigned to
       if (personClickedOn === allTasks[i].currentlyAssignedTo) {
         // Checks if the task should be displayed today (this day of the week)
-        if (
-          allTasks[i].frequencyOfTask === 'weekly' &&
-          allTasks[i].dayOfWeekToRepeatTask === dayOfWeek
-        ) {
+        if (allTasks[i].frequencyOfTask === 'weekly' && allTasks[i].dayOfWeekToRepeatTask === dayOfWeek) {
+
           thisPersonsTasks.push(allTasks[i]);
 
           // Checks if the task should be displayed today (this day of the month)
-        } else if (
-          allTasks[i].frequencyOfTask === 'monthly' &&
-          allTasks[i].dayOfMonthToRepeatTask === dayOfMonth
-        ) {
+        } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask === dayOfMonth) {
+
           thisPersonsTasks.push(allTasks[i]);
 
           // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
-        } else if (
-          allTasks[i].frequencyOfTask === 'monthly' &&
-          allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth
-        ) {
+        } else if (allTasks[i].frequencyOfTask === 'monthly' && NumberOfDaysThisMonth === dayOfMonth && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
+
           thisPersonsTasks.push(allTasks[i]);
 
           // Pushes the task to thisPersonsTasks if the task is done once or daily task
-        } else if (
-          allTasks[i].frequencyOfTask === 'once' ||
-          allTasks[i].frequencyOfTask === 'daily'
-        ) {
+        } else if (allTasks[i].frequencyOfTask === 'once' || allTasks[i].frequencyOfTask === 'daily') {
+ 
           thisPersonsTasks.push(allTasks[i]);
         }
       }
@@ -123,3 +117,5 @@ function showThisPersonsTasks(event) {
 }
 
 render(getAllAssignees(allTasks));
+
+
