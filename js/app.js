@@ -6,7 +6,13 @@ var allTasks = [];
 var uniqueTasksNames = new Set();
 
 // This is the task constructor, still needs some work but we do not have much content to work with so far.
-var Task = function(taskName, assignedTo, frequencyOfTask, dayOfWeekToRepeatTask, dayOfMonthToRepeatTask) {
+var Task = function(
+  taskName,
+  assignedTo,
+  frequencyOfTask,
+  dayOfWeekToRepeatTask,
+  dayOfMonthToRepeatTask
+) {
   this.taskName = taskName;
   this.assignedTo = assignedTo;
   this.startingDate = dayOfWeek;
@@ -20,7 +26,7 @@ var Task = function(taskName, assignedTo, frequencyOfTask, dayOfWeekToRepeatTask
 };
 
 // This function rotates through users
-Task.prototype.updateDate = function () {
+Task.prototype.updateDate = function() {
   if (dayOfWeek !== this.startingDate) {
     this.startingDate = dayOfWeek;
 
@@ -44,7 +50,7 @@ function colorChanger(element, thisPersonsTasks) {
   if (thisPersonsTasks === false) {
     element.style.backgroundColor = '#D15360';
   } else {
-    element.style.backgroundColor = '#7FFFD4';
+    element.style.backgroundColor = '#28cc22';
   }
 }
 //This function is generates a random number between 0 and the numberOfPeople assigned to the task.
@@ -60,7 +66,7 @@ function checkLocalStorage() {
   // of local storage
   if (dataInLocalStorage) {
     allTasks = dataInLocalStorage;
-    allTasks.forEach(function (task) {
+    allTasks.forEach(function(task) {
       uniqueTasksNames.add(task.taskName);
     });
   } else {
