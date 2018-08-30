@@ -3,6 +3,9 @@
 var mainEl = document.getElementById('main');
 var NumberOfDaysThisMonth = moment().daysInMonth();
 
+console.log(NumberOfDaysThisMonth);
+console.log(dayOfMonth);
+
 // Creates an array of all people who are assigned a task
 function getAllAssignees(tasks) {
   var allAssignees = [];
@@ -75,7 +78,7 @@ function showThisPersonsTasks(event) {
           thisPersonsTasks.push(allTasks[i]);
 
           // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
-        } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
+        } else if (allTasks[i].frequencyOfTask === 'monthly' && NumberOfDaysThisMonth === dayOfMonth && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
           thisPersonsTasks.push(allTasks[i]);
 
           // Pushes the task to thisPersonsTasks if the task is done once or daily task

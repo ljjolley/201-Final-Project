@@ -197,4 +197,4 @@ function assignWhenToRepeatTaskValues() {
   }
 }
 
-frequencyOfTask.addEventListener('click', updateWhenToRepeatTask);
+frequencyOfTask.addEventListener('change', updateWhenToRepeatTask);
