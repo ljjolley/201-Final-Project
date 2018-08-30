@@ -53,7 +53,7 @@ form {
 }
 
 legend {
-  margin-bottom: 1.250em;
+  margin-bottom: .5em;
 }
 
 fieldset legend {
@@ -65,8 +65,8 @@ label {
   width: 7em;
 }
 
-#task-instructions {
-  padding-bottom: 10em;
+.task-instructions {
+  padding-bottom: 1em;
 }
 
 #taskName {
@@ -82,10 +82,11 @@ label {
   margin-bottom: 0.625em;
 }
 
-input {
+input, select {
   padding: 0.4em 2em 0.4em 1em;
   border-radius: 0.313em;
   border: 0.031em solid black;
+  font-size: 1.1em;
 }
 
 form button {
@@ -113,9 +114,6 @@ section {
 
 section button {
   float: right;
-  border: none;
-  background-color: transparent;
-  color: red;
 }
 
 section button:hover {
@@ -174,6 +172,10 @@ section ul:first-child li {
   text-align: center;
 }
 
+.selected-person {
+  background-color: rgb(156, 224, 241);
+}
+
 footer {
   background-color: rgb(64, 161, 184);
   height: 4em;
@@ -188,4 +190,30 @@ footer {
   padding: 5px;
   align-content: center;
   margin: 10px;
+}
+
+.happy-helpers p {
+  line-height: 1.3em;
+  font-size: .9em;
+}
+
+.linkedInLogo {
+  width: 23px;
+  margin-right: 0;
+  float: none;
+  vertical-align: top;
+}
+
+.animateTaskIn {
+  animation: highlightAndFade 1s;
+  animation-timing-function: ease-out; 
+}
+
+@keyframes highlightAndFade {
+  0% {
+    background-color: rgb(255, 156, 166);
+  }
+  100% {
+    background-color: #D15360;
+  }
 }

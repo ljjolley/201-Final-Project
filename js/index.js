@@ -46,10 +46,16 @@ function render(getAllAssignees) {
   peoplesNames.addEventListener('click', showThisPersonsTasks);
 }
 
+var selectedPersonEl;
 //function to show task of individual after being clicked on
 function showThisPersonsTasks(event) {
   var peoplesTasks = document.getElementById('peoples-tasks');
-  var personClickedOn = event.target.textContent;
+  if(selectedPersonEl !== undefined) {
+    selectedPersonEl.className = '';
+  }
+  selectedPersonEl = event.target;
+  selectedPersonEl.className = "selected-person";
+  var personClickedOn = selectedPersonEl.textContent;
   var thisPersonsTasks = [];
   peoplesTasks.innerHTML = '';
 
@@ -72,8 +78,8 @@ function showThisPersonsTasks(event) {
         } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
           thisPersonsTasks.push(allTasks[i]);
 
-          // Pushes the task to thisPersonsTasks if the task is a one-off or daily task
-        } else if (allTasks[i].frequencyOfTask === 'one-off' || allTasks[i].frequencyOfTask === 'daily') {
+          // Pushes the task to thisPersonsTasks if the task is done once or daily task
+        } else if (allTasks[i].frequencyOfTask === 'once' || allTasks[i].frequencyOfTask === 'daily') {
           thisPersonsTasks.push(allTasks[i]);
         }
       }
@@ -102,4 +108,5 @@ function showThisPersonsTasks(event) {
   }
   return thisPersonsTasks;
 }
+
 render(getAllAssignees(allTasks));

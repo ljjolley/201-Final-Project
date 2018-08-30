@@ -18,7 +18,7 @@
         <a href="index.html">Your Tasks</a>
       </li>
       <li>
-        <a href="editor.html">Add Task</a>
+        <a href="editor.html">Add Tasks</a>
       </li>
       <li>
         <a href="about.html">About</a>
@@ -28,7 +28,6 @@
 
   <main id="editor-main">
     <form id="newTaskForm">
-      <legend>Task Creator</legend>
       <fieldset>
         <legend>Add a Task</legend>
         <p class="task-instructions">Start adding your household tasks below. Make sure to assign the task to at least one person in the house hold. Up to five people can be assigned to a task.
@@ -36,16 +35,18 @@
         <div id="taskName">
           <label for="task">Task:</label>
           <input name="task" type="text" size="15" required="required" placeholder="Task" />
-        </div>
+          <br />
+          <br />
+          <label for="frequency-of-task">Frequency:</label>
+          <select id="frequency-of-task" name="frequency-of-task">
+            <option value="once" selected="selected">Once</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
 
-        <select id="frequency-of-task" name="frequency-of-task">
-          <option value="one-off" selected="selected">One Off</option>
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-        </select>
-
-        <select id="when-to-repeat-task" name="when-to-repeat-task"></select>
+          <select id="when-to-repeat-task" name="when-to-repeat-task"></select>
+        </div>  
 
         <div id="taskAssignees">
           <div>
