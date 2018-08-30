@@ -1,7 +1,7 @@
 'use strict';
+
 var today = new Date();
 var formattedToday = moment().format('dddd, MMMM Do YYYY');
-console.log(formattedToday);
 var dayOfWeek = today.getDay();
 var dayOfMonth = today.getDate();
 var NumberOfDaysThisMonth = moment().daysInMonth();
@@ -27,7 +27,6 @@ var Task = function(
   this.isTaskCompleted = false;
   allTasks.push(this);
 };
-
 
 // Rotates through assignees
 function updateDate(taskToRotateAssignee) {
@@ -91,27 +90,23 @@ function rotateTaskAssignees() {
     // Checks if the task should be displayed today (this day of the week)
     if (allTasks[i].frequencyOfTask === 'weekly' && allTasks[i].dayOfWeekToRepeatTask === dayOfWeek) {
       updateDate(allTasks[i]);
-      console.log('test1');
 
     // Checks if the task should be displayed today (this day of the month)
     } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask === dayOfMonth) {
       updateDate(allTasks[i]);
-      console.log('test2');
+
     // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
     } else if (allTasks[i].frequencyOfTask === 'monthly' && NumberOfDaysThisMonth === dayOfMonth && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
       updateDate(allTasks[i]);
-      console.log('test3');
+
     // Pushes the task to thisPersonsTasks if the task is done once or daily task
     } else if (allTasks[i].frequencyOfTask === 'daily') {
-      console.log(allTasks[i].currentlyAssignedTo);
       updateDate(allTasks[i]);
-      console.log(allTasks[i].currentlyAssignedTo);
+
     } else if (allTasks[i].frequencyOfTask === 'once') {
       if (formattedToday !== allTasks[i].startingDate) {
         var toDelete = allTasks.indexOf(allTasks[i]);
-        console.log('before', allTasks);
         allTasks.splice(toDelete, 1);
-        console.log('after', allTasks);
       }
     }
   }

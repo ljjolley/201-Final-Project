@@ -12,12 +12,16 @@
     },
     "globals": {
       "allTasks": true,
-      "today": true,
       "dayOfWeek": true,
       "dayOfMonth": true,
       "colorChanger": true,
       "checkLocalStorage": true,
-      "updateDate": true
+      "updateDate": true,
+      "moment": true,
+      "uniqueTasksNames": true,
+      "NumberOfDaysThisMonth": true,
+      "writeToLocalStorage": true,
+      "Task": true
     },
     "rules": {
       "eqeqeq": ["error", "always"],
