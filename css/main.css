@@ -79,7 +79,9 @@ label {
 #taskAssignees {
   float: left;
 }
-
+#when-to-repeat-task {
+  display: none;
+}
 #taskAssignees div {
   margin-bottom: 0.625em;
 }

@@ -23,7 +23,7 @@ console.log(getAllAssignees(allTasks));
 //render the assignee and display them as lists
 function render(getAllAssignees) {
   mainEl.innerHTML =
-    "<h1>Welcome to <br> Happy Home Task Manager!</h1><section>We’re here to help your household manager chores and task so you don’t have to remember them…or remind others it’s their turn.<br><br>Your household's list of tasks lives here. If you need to add task, you can do that on the <a href='editor.html'>Add Tasks</a> page. Click on a name to find out what tasks are assigned to each person today. Red tasks are those that need to be completed today. Green tasks have been completed. Tasks that rotate between multiple people will only be displayed when it is that person’s turn to complete it. </section>";
+    "<h1>Welcome to <br> Happy Home Task Manager!</h1><section>We’re here to help your household manager chores and task so you don’t have to remember them…or remind others it’s their turn.<br><br>Your household's list of tasks lives here. If you need to add task, you can do that on the <a href='editor.html'>Add Tasks</a> page. Click on a name to find out what tasks are assigned to each person today. Red tasks are those that need to be completed today. Green tasks have been completed. Tasks that rotate between multiple people will only be displayed when it is that person’s turn to complete it. <br><br> Once you create tasks, they’ll show up in the box below. If the box is blank, you can follow this link <a href='editor.html'>HERE</a> to start adding tasks.</section>";
   var sectionEl = document.createElement('section');
   var ulEl = document.createElement('ul');
   var h3El = document.createElement('h3');
