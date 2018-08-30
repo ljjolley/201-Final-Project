@@ -12,7 +12,9 @@
 
 <body>
   <header>
-    <img src="img/Logo.png" alt="Happy Home Logo" height="70px">
+    <a href="index.html">
+      <img src="img/Logo.png" alt="Happy Home Logo" height="70px">
+    </a>
     <ul>
       <li>
         <a href="index.html">Your Tasks</a>
@@ -30,7 +32,8 @@
     <form id="newTaskForm">
       <fieldset>
         <legend>Add a Task</legend>
-        <p class="task-instructions">Start adding your household tasks below. Make sure to assign the task to at least one person in the house hold. Up to five people can be assigned to a task.
+        <p class="task-instructions">Start adding your household tasks below. Make sure to assign the task to at least one
+          person in the house hold. Up to five people can be assigned to a task.
         </p>
         <div id="taskName">
           <label for="task">Task:</label>
@@ -46,7 +49,7 @@
           </select>
 
           <select id="when-to-repeat-task" name="when-to-repeat-task"></select>
-        </div>  
+        </div>
 
         <div id="taskAssignees">
           <div>
@@ -74,6 +77,11 @@
         <button type="submit">Submit</button>
       </fieldset>
     </form>
+    <section>
+      <p>The tasks you have added are listed below. The name of the task, the frequency, as well as all of the people who
+        are assigned to the task will be listed. When a task is first added it will be red to indicate it isn’t completed
+        yet. It will also be red on the ‘Your Tasks’ page. Once the task has been completed, it will turn green.</p>
+    </section>
 
     <div id="tasks-editor-list"></div>
   </main>

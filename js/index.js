@@ -22,7 +22,8 @@ console.log(getAllAssignees(allTasks));
 
 //render the assignee and display them as lists
 function render(getAllAssignees) {
-  mainEl.innerHTML = '<h1>Task Overview</h1>';
+  mainEl.innerHTML =
+    "<h1>Welcome to <br> Happy Home Task Manager!</h1><section>Your household's list of tasks lives here. If you need to add task, you can do that on the <a href='editor.html'>Add Tasks</a> page. Click on a name to find out what tasks are assigned to each person today. Red tasks are those that need to be completed today. Green tasks have been completed. Tasks that rotate between multiple people will only be displayed when it is that person’s turn to complete it.</section>";
   var sectionEl = document.createElement('section');
   var ulEl = document.createElement('ul');
   var h3El = document.createElement('h3');
@@ -50,11 +51,11 @@ var selectedPersonEl;
 //function to show task of individual after being clicked on
 function showThisPersonsTasks(event) {
   var peoplesTasks = document.getElementById('peoples-tasks');
-  if(selectedPersonEl !== undefined) {
+  if (selectedPersonEl !== undefined) {
     selectedPersonEl.className = '';
   }
   selectedPersonEl = event.target;
-  selectedPersonEl.className = "selected-person";
+  selectedPersonEl.className = 'selected-person';
   var personClickedOn = selectedPersonEl.textContent;
   var thisPersonsTasks = [];
   peoplesTasks.innerHTML = '';
@@ -65,21 +66,32 @@ function showThisPersonsTasks(event) {
     for (var i = 0; i < allTasks.length; i++) {
       // Checks if the person who was clicked on matches who the task is currently assigned to
       if (personClickedOn === allTasks[i].currentlyAssignedTo) {
-
         // Checks if the task should be displayed today (this day of the week)
-        if (allTasks[i].frequencyOfTask === 'weekly' && allTasks[i].dayOfWeekToRepeatTask === dayOfWeek) {
+        if (
+          allTasks[i].frequencyOfTask === 'weekly' &&
+          allTasks[i].dayOfWeekToRepeatTask === dayOfWeek
+        ) {
           thisPersonsTasks.push(allTasks[i]);
 
           // Checks if the task should be displayed today (this day of the month)
-        } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask === dayOfMonth) {
+        } else if (
+          allTasks[i].frequencyOfTask === 'monthly' &&
+          allTasks[i].dayOfMonthToRepeatTask === dayOfMonth
+        ) {
           thisPersonsTasks.push(allTasks[i]);
 
           // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
-        } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
+        } else if (
+          allTasks[i].frequencyOfTask === 'monthly' &&
+          allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth
+        ) {
           thisPersonsTasks.push(allTasks[i]);
 
           // Pushes the task to thisPersonsTasks if the task is done once or daily task
-        } else if (allTasks[i].frequencyOfTask === 'once' || allTasks[i].frequencyOfTask === 'daily') {
+        } else if (
+          allTasks[i].frequencyOfTask === 'once' ||
+          allTasks[i].frequencyOfTask === 'daily'
+        ) {
           thisPersonsTasks.push(allTasks[i]);
         }
       }
@@ -90,7 +102,7 @@ function showThisPersonsTasks(event) {
   for (let i = 0; i < thisPersonsTasks.length; i++) {
     var ilEl = document.createElement('li');
     colorChanger(ilEl, thisPersonsTasks[i].isTaskCompleted);
-    ilEl.addEventListener('click', function (event) {
+    ilEl.addEventListener('click', function(event) {
       if (thisPersonsTasks[i].isTaskCompleted === false) {
         thisPersonsTasks[i].isTaskCompleted = true;
         writeToLocalStorage(event);
@@ -103,7 +115,8 @@ function showThisPersonsTasks(event) {
       colorChanger(this, thisPersonsTasks[i].isTaskCompleted);
     });
     ilEl.style.color = 'white';
-    ilEl.textContent = thisPersonsTasks[i].taskName + ': ' + thisPersonsTasks[i].frequencyOfTask;
+    ilEl.textContent =
+      thisPersonsTasks[i].taskName + ': ' + thisPersonsTasks[i].frequencyOfTask;
     peoplesTasks.appendChild(ilEl);
   }
   return thisPersonsTasks;
