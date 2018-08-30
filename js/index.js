@@ -1,7 +1,6 @@
 'use strict';
 
 var mainEl = document.getElementById('main');
-var NumberOfDaysThisMonth = moment().daysInMonth();
 
 console.log(NumberOfDaysThisMonth);
 console.log(dayOfMonth);
@@ -57,7 +56,7 @@ function showThisPersonsTasks(event) {
     selectedPersonEl.className = '';
   }
   selectedPersonEl = event.target;
-  selectedPersonEl.className = "selected-person";
+  selectedPersonEl.className = 'selected-person';
   var personClickedOn = selectedPersonEl.textContent;
   var thisPersonsTasks = [];
   peoplesTasks.innerHTML = '';
@@ -71,18 +70,22 @@ function showThisPersonsTasks(event) {
 
         // Checks if the task should be displayed today (this day of the week)
         if (allTasks[i].frequencyOfTask === 'weekly' && allTasks[i].dayOfWeekToRepeatTask === dayOfWeek) {
+
           thisPersonsTasks.push(allTasks[i]);
 
           // Checks if the task should be displayed today (this day of the month)
         } else if (allTasks[i].frequencyOfTask === 'monthly' && allTasks[i].dayOfMonthToRepeatTask === dayOfMonth) {
+
           thisPersonsTasks.push(allTasks[i]);
 
           // Displays tasks on the last day of the month if the task is assigned a day this month doesn't have
         } else if (allTasks[i].frequencyOfTask === 'monthly' && NumberOfDaysThisMonth === dayOfMonth && allTasks[i].dayOfMonthToRepeatTask > NumberOfDaysThisMonth) {
+
           thisPersonsTasks.push(allTasks[i]);
 
           // Pushes the task to thisPersonsTasks if the task is done once or daily task
         } else if (allTasks[i].frequencyOfTask === 'once' || allTasks[i].frequencyOfTask === 'daily') {
+ 
           thisPersonsTasks.push(allTasks[i]);
         }
       }
@@ -113,3 +116,5 @@ function showThisPersonsTasks(event) {
 }
 
 render(getAllAssignees(allTasks));
+
+

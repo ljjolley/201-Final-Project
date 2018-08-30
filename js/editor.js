@@ -99,7 +99,6 @@ function editorRender() {
     sectionEl.appendChild(ulEl);
 
     //created a list that shows the assigned individual with a foor loop
-    //eslint-disable-next-line
     for (
       let assigneeInTasks = 0;
       //eslint-disable-next-line
@@ -145,21 +144,7 @@ function sectionEventListener() {
   }
 }
 
-//rendered all the data onto page to display task
-editorRender();
-
-//create event listener to take in form data
-taskFormEl.addEventListener('submit', function (event) {
-  event.preventDefault();
-  editorInput(event);
-  //eslint-disable-next-line
-  checkLocalStorage();
-  editorRender();
-
-  var lastAddedTask = document.getElementById('tasks-editor-list').lastChild;
-  lastAddedTask.className = "animateTaskIn";
-});
-
+// Adds when a task should be repeated the instance of Task being created
 function updateWhenToRepeatTask(event) {
   whenToRepeatTask.innerHTML = '';
 
@@ -184,6 +169,7 @@ function updateWhenToRepeatTask(event) {
   }
 }
 
+// Assigns when a task should be repeated
 function assignWhenToRepeatTaskValues() {
   if (frequencyOfTask.value === 'weekly') {
     dayOfWeekToRepeatTask = daysOfTheWeek.indexOf(whenToRepeatTask.value);
@@ -197,4 +183,19 @@ function assignWhenToRepeatTaskValues() {
   }
 }
 
+// Binds event lister to the form to take in user data
+taskFormEl.addEventListener('submit', function (event) {
+  event.preventDefault();
+  editorInput(event);
+  checkLocalStorage();
+  editorRender();
+
+  var lastAddedTask = document.getElementById('tasks-editor-list').lastChild;
+  lastAddedTask.className = 'animateTaskIn';
+});
+
+// Binds event listener to updateWhenToRepeatTask
 frequencyOfTask.addEventListener('change', updateWhenToRepeatTask);
+
+// Rendered data onto page to display task
+editorRender();

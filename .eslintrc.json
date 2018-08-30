@@ -14,7 +14,10 @@
       "allTasks": true,
       "today": true,
       "dayOfWeek": true,
-      "dayOfMonth": true
+      "dayOfMonth": true,
+      "colorChanger": true,
+      "checkLocalStorage": true,
+      "updateDate": true
     },
     "rules": {
       "eqeqeq": ["error", "always"],
