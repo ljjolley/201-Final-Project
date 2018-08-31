@@ -54,8 +54,10 @@ function updateDate(taskToRotateAssignee) {
 function colorChanger(element, thisPersonsTasks) {
   if (thisPersonsTasks === false) {
     element.style.backgroundColor = '#D15360';
+    element.style.color = 'white';
   } else {
     element.style.backgroundColor = '#28cc22';
+    element.style.color = 'black';
   }
 }
 
