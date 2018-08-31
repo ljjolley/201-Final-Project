@@ -37,7 +37,8 @@ function editorInput() {
     });
     return;
   }
-  //clears out user data after the submit button and runs for loop to push data onto assigned list array
+
+  // Clears out user data after the submit button and runs for loop to push data onto assigned list array
   for (let i = 0; i < assignee.length; i++) {
     if (assignee[i].value) {
       assignedToList.push(assignee[i].value.toLowerCase());
@@ -47,7 +48,7 @@ function editorInput() {
   assignedToList = deleteDuplicatenames(assignedToList);
 
   assignWhenToRepeatTaskValues();
-  //eslint-disable-next-line
+
   new Task(
     event.target.task.value.toLowerCase(),
     assignedToList,
@@ -55,15 +56,13 @@ function editorInput() {
     dayOfWeekToRepeatTask,
     dayOfMonthToRepeatTask
   );
-  //eslint-disable-next-line
 
-  //store the all task array as 'allTasks' and updates it;
-  //eslint-disable-next-line
+  // Store the all task array as 'allTasks' and updates it
   writeToLocalStorage();
   event.target.task.value = null;
 }
 
-// This function checkes for duplicate names in an Array and returns a new array that works.
+// This function checkes for duplicate names in an Array and returns a new array that works
 function deleteDuplicatenames(tasks) {
   var noDuplicates = [];
   for (var i = 0; i < tasks.length; i++) {
@@ -74,16 +73,14 @@ function deleteDuplicatenames(tasks) {
   return noDuplicates;
 }
 
-//renders the local storage to display the tasks as lists
+// Renders the local storage to display the tasks as lists
 function editorRender() {
   checkLocalStorage();
   divEl.innerHTML = '';
 
   //run a loop to create elements based on local storage
-  //eslint-disable-next-line
   for (
     let localDataObjects = 0;
-    //eslint-disable-next-line
     localDataObjects < allTasks.length;
     localDataObjects++
   ) {
@@ -95,53 +92,46 @@ function editorRender() {
     var pEl = document.createElement('p');
     var ulEl = document.createElement('ul');
 
-    // this let you change the color of the element based on boolean;
+    // This let you change the color of the element based on boolean
     console.log(allTasks[localDataObjects].isTaskCompleted);
     colorChanger(sectionEl, allTasks[localDataObjects].isTaskCompleted);
 
-    //added text content to each element
-    //eslint-disable-next-line
+    // Added text content to each element
     h2El.textContent = allTasks[localDataObjects].taskName;
     h3El.textContent =
       'Frequency: ' + allTasks[localDataObjects].frequencyOfTask;
     buttonEl.textContent = 'Delete Task';
     pEl.textContent = 'Assigned to:';
 
-    //appended the elements
+    // Appended the elements
     sectionEl.appendChild(h2El);
     sectionEl.appendChild(h3El);
     sectionEl.appendChild(buttonEl);
     sectionEl.appendChild(pEl);
     sectionEl.appendChild(ulEl);
 
-    //created a list that shows the assigned individual with a foor loop
+    // Created a list that shows the assigned individual with a foor loop
     for (
       let assigneeInTasks = 0;
-      //eslint-disable-next-line
       assigneeInTasks < allTasks[localDataObjects].assignedTo.length;
       assigneeInTasks++
     ) {
       var liEl = document.createElement('li');
-      //eslint-disable-next-line
       liEl.textContent = allTasks[localDataObjects].assignedTo[assigneeInTasks];
       ulEl.appendChild(liEl);
     }
   }
-  //added event listener upon render to make sure the buttons have listeners
+  // Added event listener upon render to make sure the buttons have listeners
   sectionEventListener();
 }
 
-//added function on button to remove local storage and derender the list
+// Added function on button to remove local storage and derender the list
 function deleteTask(event) {
   if (event.target.textContent === 'Delete Task') {
     var taskDelete = event.target.parentNode.firstChild.textContent;
-    //eslint-disable-next-line
     for (let i = 0; i < allTasks.length; i++) {
-      //eslint-disable-next-line
       if (allTasks[i].taskName === taskDelete) {
-        //eslint-disable-next-line
         allTasks.splice(i, 1);
-        //eslint-disable-next-line
         writeToLocalStorage();
         event.target.parentNode.remove();
       }
@@ -149,9 +139,8 @@ function deleteTask(event) {
   }
 }
 
-//a function to add the delete button on each different sections generated
+// A function to add the delete button on each different sections generated
 function sectionEventListener() {
-  //eslint-disable-next-line
   checkLocalStorage();
   var taskSectionEls = document.getElementsByTagName('section');
   for (let i = 0; i < taskSectionEls.length; i++) {
@@ -200,7 +189,6 @@ function assignWhenToRepeatTaskValues() {
     dayOfWeekToRepeatTask = null;
   }
 }
-
 
 // Binds event lister to the form to take in user data
 taskFormEl.addEventListener('submit', function (event) {
