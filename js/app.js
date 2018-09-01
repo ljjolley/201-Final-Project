@@ -95,10 +95,17 @@ function rotateTaskAssignees() {
       updateDate(allTasks[i]);
       console.log('test3');
     // Pushes the task to thisPersonsTasks if the task is done once or daily task
-    } else if (allTasks[i].frequencyOfTask === 'once' || allTasks[i].frequencyOfTask === 'daily') {
+    } else if (allTasks[i].frequencyOfTask === 'daily') {
       console.log(allTasks[i].currentlyAssignedTo);
       updateDate(allTasks[i]);
       console.log(allTasks[i].currentlyAssignedTo);
+    } else if (allTasks[i].frequencyOfTask === 'once') {
+      if (formattedToday !== allTasks[i].startingDate) {
+        var toDelete = allTasks.indexOf(allTasks[i]);
+        console.log('before', allTasks);
+        allTasks.splice(toDelete, 1);
+        console.log('after', allTasks);
+      }
     }
   }
 
